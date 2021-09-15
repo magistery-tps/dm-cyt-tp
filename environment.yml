@@ -1,0 +1,12 @@
+name: dm-cyt-tp1
+channels:
+  - defaults
+dependencies:
+  - python=3.9.6
+  - matplotlib
+  - numpy
+  - scikit-learn
+  - scipy
+  - jupyterlab
+  - pip:
+    - mne
