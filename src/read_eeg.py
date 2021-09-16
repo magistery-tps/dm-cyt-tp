@@ -2,28 +2,7 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 import glob
-
-
-class EEG:
-    def __init__(self, data, nchannels, nsamples, sfrequency, subject, resting_state):
-        self.data          = data
-        self.nchannels     = nchannels
-        self.nsamples      = nsamples
-        self.sfrequency    = sfrequency
-        self.subject       = subject
-        self.resting_state = resting_state
-        
-    def dataT(self): return np.transpose(self.data)
-
-    def to_dict(self):
-        return {
-            'subject'      : self.subject,
-            'resting_state': self.resting_state,
-            'nchannels'    : self.nchannels,
-            'sfrequency'   : self.sfrequency,
-            'nsamples'     : self.nsamples,
-            'data'         : self.data
-        }
+from eeg import EEG
 
     
 def load_eeg_dataset(path, srate = 128, verbose=False):

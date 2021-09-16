@@ -10,6 +10,27 @@ def channels():
         'FC5', 'FC6','CP1','CP2','CP5','CP6','AFz','Fpz','POz'
     ]
 
+class EEG:
+    def __init__(self, data, nchannels, nsamples, sfrequency, subject, resting_state):
+        self.data          = data
+        self.nchannels     = nchannels
+        self.nsamples      = nsamples
+        self.sfrequency    = sfrequency
+        self.subject       = subject
+        self.resting_state = resting_state
+        
+    def dataT(self): return np.transpose(self.data)
+
+    def to_dict(self):
+        return {
+            'subject'      : self.subject,
+            'resting_state': self.resting_state,
+            'nchannels'    : self.nchannels,
+            'sfrequency'   : self.sfrequency,
+            'nsamples'     : self.nsamples,
+            'data'         : self.data
+        }
+
 
 def get_info_eeg_and_montage(channels=channels(), montage_type='standard_1020', sfreq = 128):
     montage = mne.channels.make_standard_montage(montage_type)
