@@ -5,54 +5,28 @@ import matplotlib.gridspec as gridspec
 import mne
 from sklearn import decomposition
 
-def plot_df_pca(df, info_eeg, n_components=3, figsize=(10, 3),title_size=15, title_y=1.05):
+def plot_eeg_pca(info_eeg, eeg_data, n_components=3, figsize=(10, 3),title_size=15, title_y=1.05):
     pca = decomposition.PCA(n_components=n_components)
-    pca.fit(np.transpose(df))
-    pcs = pca.transform(np.transpose(df))
-    
-    var = pca.explained_variance_ratio_
-
-    fig, ax = plt.subplots(ncols=pcs.shape[1], figsize=figsize)
-
-    for p in range(pcs.shape[1]):
-      mne.viz.plot_topomap(
-          pcs[:,p],
-          info_eeg,
-          cmap='coolwarm', 
-          contours=0,
-          axes=ax[p],
-          show=False
-      )
-    fig.suptitle(
-        f'{round(var[p]*100, 2)}% de varianza explicada por las primeras {n_components} componentes.',
-        size=title_size,
-        y=title_y
-    )
-
-def plot_eeg_pca(info_eeg, eeg, n_components=3, figsize=(10, 3),title_size=15, title_y=1.05):
-    pca = decomposition.PCA(n_components=n_components)
-    pca.fit(eeg.dataT())
-    pcs = pca.transform(eeg.dataT())
+    pca.fit(eeg_data)
+    pcs = pca.transform(eeg_data)
 
     var = pca.explained_variance_ratio_
 
     fig, ax = plt.subplots(ncols=pcs.shape[1], figsize=figsize)
-
     for p in range(pcs.shape[1]):
         mne.viz.plot_topomap(
             pcs[:,p],
             info_eeg,
-            cmap='coolwarm', 
-            contours=0,
-            axes=ax[p],
-            show=False
+            cmap     ='coolwarm', 
+            contours = 0,
+            axes     = ax[p],
+            show     = False
         )
     fig.suptitle(
         f'{round(var[p]*100, 2)}% de varianza explicada por las primeras {n_components} componentes.',
         size=title_size,
         y=title_y
     )
-    
 
 
 def plot_eeg_topology(data_prom, info_eeg, vminimo, vmaximo, figsize=(8, 4)):
@@ -60,31 +34,44 @@ def plot_eeg_topology(data_prom, info_eeg, vminimo, vmaximo, figsize=(8, 4)):
     plot_eeg_topology_on_axis(axis, data_prom, info_eeg, vminimo, vmaximo)
 
 
-def plot_eeg_topology_on_axis(axis, data_prom, info_eeg, vminimo, vmaximo):
-    im, cm  = mne.viz.plot_topomap(
+def plot_eeg_topology_on_axis(axis, data_prom, info_eeg, vminimo, vmaximo, title_size=16, title_y=1):
+    axis.set_title(
+        'Topogragía Promedio',
+        size=title_size,
+        y=title_y
+    )
+    mne.viz.plot_topomap(
         data_prom,
         info_eeg,
         vmin     = vminimo,
         vmax     = vmaximo,
         cmap     = 'coolwarm', 
         contours = 0, 
-        show     = True
+        show     = True,
+        axes     = axis
     )
-    axis.set_title('Topogragía Promedio')
+    
 
 
-
-def plot_egg(eeg, montage, inicio = 1, fin= 10, figsize=(14, 10)):
+def plot_egg(eeg, montage, inicio = 1, fin= 10, figsize=(14, 10), title_size=18, title_y=1):
     _, axis = plt.subplots(1, figsize=figsize)
-    plot_egg_on_axis(axis, eeg, montage, inicio, fin)
+    plot_egg_on_axis(axis, eeg, montage, inicio, fin, title_size, title_y)
     
 def plot_egg_on_axis(
     axis,
     eeg,
     montage,
     inicio = 1,
-    fin    = 10
+    fin    = 10,
+    title_size=16, 
+    title_y=1
 ):
+    axis.set_title(
+        'Señales por sensor',
+        size=title_size,
+        y=title_y
+    )
+        
     start = inicio * eeg.sfrequency
     end   = fin * eeg.sfrequency
     
