@@ -1,2 +1,2 @@
 from .gpf  import *
-from .egg  import *
+from .eeg  import *

@@ -51,3 +51,13 @@ def get_info_eeg_and_montage(channels=channels(), montage_type='standard_1020', 
     ).set_montage(montage_30)
 
     return info_eeg, montage_30
+
+
+def eegs_total_mean(eegs, inicio = 1, fin= 4):
+    promedios_totales     = np.empty((0, eegs[0].nchannels))
+    
+    for eeg in eegs:
+        promedios         = eeg.data[inicio * eeg.sfrequency : fin * eeg.sfrequency, :].mean(axis=0)
+        promedios_totales = np.concatenate((promedios_totales, promedios.reshape(1,30)), axis=0) 
+
+    return promedios_totales

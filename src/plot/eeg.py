@@ -106,3 +106,36 @@ def plot_egg_on_axis(
     axis.set_yticklabels(montage.ch_names)
     axis.set_ylabel('Canales')
     axis.set_xlabel('Tiempo (Seg.)')
+
+
+def plot_eegs_summary(eegs, info_eeg, montage, inicio = 1, fin= 4):
+    if len(eegs) == 0: return 
+
+    nchannels             = eegs[0].nchannels
+    datos_orig            = np.empty((0, nchannels + 2))  #30 canales + 2 metadata individuo y tipo de reposo
+    promedios_totales     = np.empty((0, nchannels))
+    inicio                = 1 #calcula los promedios entre 1 y 4
+    fin                   = 4
+
+    for eeg in sorted(eegs, key=lambda it: it.subject + it.resting_state):
+        participante = np.repeat(int(eeg.subject), eeg.nsamples).reshape(eeg.nsamples, 1)
+        tipo       = np.repeat(int(eeg.resting_state), eeg.nsamples).reshape(eeg.nsamples, 1)    
+
+        metadata   = np.concatenate((participante,tipo),axis=1)
+        datos_orig = np.concatenate((datos_orig,np.concatenate((eeg.data, metadata),axis=1)),axis=0)
+
+        promedios         = eeg.data[inicio*eeg.sfrequency:fin*eeg.sfrequency, :].mean(axis=0)
+        promedios_totales = np.concatenate((promedios_totales, promedios.reshape(1,30)), axis=0) 
+
+        fig, axes = plt.subplots(1, 2, figsize=(20, 8), gridspec_kw={'width_ratios': [3, 1.2]})
+        fig.suptitle(f'Sujeto {eeg.subject} - Estado de reposo {eeg.resting_state}', size=20, y=1.05)
+
+        plot_egg_on_axis(axes[0], eeg, montage)
+        plot_eeg_topology_on_axis(
+            axes[1],
+            promedios,
+            info_eeg,
+            -0.54932109,  # Estos son los valores máximo y minimo de todos los promedios.
+            0.34050091
+        )
+        plot_eeg_pca(info_eeg, eeg.dataT())
