@@ -42,6 +42,16 @@ http://localhost:8888/?token=45efe99607fa6......
 
 **Paso 5**: Ir a http://localhost:8888.... como se indica en la consola.
 
+**Paso 6**: En la segunda celta de la notebook cambiar el hostname:
+
+```bash
+def is_localhost(): 
+    hostname = !hostname
+    return hostname[0] == 'skynet' <--- Tu hostname
+```
+
+hostname es el “Nombre completo de equipo” en windows o el hostname en linux. Esta funcion se utilizar para correr codigo en colab pero no localmente.
+
 ## Tema Material Darker para Jupyter Lab
 
 **Paso 1**: Instalar tema.
