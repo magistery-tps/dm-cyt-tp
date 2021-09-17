@@ -37,6 +37,7 @@ $ conda activate dm-cyt-tp
 $ unzip datasets/procesados-20210908T224817Z-001.zip
 $ mv procesados dataset
 ```
+_Nota_: En windows se puede hacer desde el explorador de archivos.
 
 **Paso 5**: Sobre el directorio del proyecto levantamos jupyter lab.
 
