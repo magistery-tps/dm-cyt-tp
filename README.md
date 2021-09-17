@@ -58,7 +58,7 @@ def is_localhost():
     return hostname[0] == 'skynet' <--- Tu hostname
 ```
 
-Para averiguar el hostname(nombre de la maquina) en windows desde cmd o linux desde bash:
+Para averiguar el hostname(nombre de la maquina), ejecular el siguiente comando(Desde cmd en windows):
 
 ```bash
 $ hostname
