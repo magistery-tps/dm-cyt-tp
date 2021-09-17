@@ -34,7 +34,8 @@ $ conda activate dm-cyt-tp
 **Paso 4**: Descomprimir el dataset:
 
 ```bash
-$ 
+$ unzip datasets/procesados-20210908T224817Z-001.zip
+$ mv procesados dataset
 ```
 
 **Paso 5**: Sobre el directorio del proyecto levantamos jupyter lab.
