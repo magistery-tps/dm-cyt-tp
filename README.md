@@ -50,21 +50,6 @@ http://localhost:8888/?token=45efe99607fa6......
 
 **Paso 6**: Ir a http://localhost:8888.... como se indica en la consola.
 
-**Paso 7**: En la segunda celda de la notebook cambiar el hostname:
-
-```bash
-def is_localhost(): 
-    hostname = !hostname
-    return hostname[0] == 'skynet' <--- Tu hostname
-```
-
-Para averiguar el hostname(nombre de la maquina), ejecular el siguiente comando(Desde cmd en windows):
-
-```bash
-$ hostname
-```
-_Nota_: En windows tambien se puede consultar desde el panel de control.
-
 ## Tema Material Darker para Jupyter Lab
 
 **Paso 1**: Instalar tema.

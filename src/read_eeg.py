@@ -4,16 +4,16 @@ from pathlib import Path
 import glob
 from eeg import EEG
 
-    
+
 def load_eeg_dataset(path, srate = 128, verbose=False):
-    return [load_egg(file_path, srate, verbose) for file_path in glob.glob(path)]
+    return [load_eeg(file_path, srate, verbose) for file_path in glob.glob(path)]
 
 
 def to_data_frame(eegs):
     return pd.DataFrame([eeg.to_dict() for eeg in eegs], columns = eegs[0].to_dict().keys())
 
 
-def load_egg(file_path, srate = 128, verbose=False):
+def load_eeg(file_path, srate = 128, verbose=False):
     datos    = pd.read_csv(file_path, sep=',', header=None)
     eeg_data = datos.to_numpy()
     srate    = 128
