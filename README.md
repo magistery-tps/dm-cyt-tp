@@ -58,7 +58,12 @@ def is_localhost():
     return hostname[0] == 'skynet' <--- Tu hostname
 ```
 
-hostname es el “Nombre completo de equipo” en windows o el hostname en linux. Esta funcion se utilizar para correr codigo en colab pero no localmente.
+Para agveriguar el hostname(nombre de la maquina) en windows desde cmd o linux desde bash:
+
+```bash
+$ hostname
+```
+_Nota_: En windows tambien se puede consultar desde el panel de control.
 
 ## Tema Material Darker para Jupyter Lab
 
