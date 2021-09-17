@@ -31,7 +31,13 @@ $ conda env create -f environment.yml
 $ conda activate dm-cyt-tp
 ```
 
-**Paso 4**: Sobre el directorio del proyecto levantamos jupyter lab.
+**Paso 4**: Descomprimir el dataset:
+
+```bash
+$ 
+```
+
+**Paso 5**: Sobre el directorio del proyecto levantamos jupyter lab.
 
 ```bash
 $ jupyter lab
@@ -40,9 +46,9 @@ Jupyter Notebook 6.1.4 is running at:
 http://localhost:8888/?token=45efe99607fa6......
 ```
 
-**Paso 5**: Ir a http://localhost:8888.... como se indica en la consola.
+**Paso 6**: Ir a http://localhost:8888.... como se indica en la consola.
 
-**Paso 6**: En la segunda celta de la notebook cambiar el hostname:
+**Paso 7**: En la segunda celda de la notebook cambiar el hostname:
 
 ```bash
 def is_localhost(): 
