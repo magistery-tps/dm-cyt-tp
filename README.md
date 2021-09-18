@@ -7,8 +7,8 @@
 
 ## Pre-Requisitos
 
-* git
-* conda
+* [git](https://git-scm.com/downloads)
+* [anaconda](https://www.anaconda.com/products/individual) o [minconda](https://docs.conda.io/en/latest/miniconda.html)
 
 ## Comenzando
 
