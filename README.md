@@ -9,6 +9,7 @@
 
 * [git](https://git-scm.com/downloads)
 * [anaconda](https://www.anaconda.com/products/individual) o [minconda](https://docs.conda.io/en/latest/miniconda.html)
+    * [Instalar-Anaconda-en-windows](https://github.com/magistery-tps/dm-cyt-tp/wiki/Instalar-Anaconda-en-windows)
 
 ## Comenzando
 
