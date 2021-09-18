@@ -29,7 +29,7 @@ $ conda env create -f environment.yml
 **Paso 3**: Activamos el entorno donde se encuentran instaladas las dependencias del proyecto.
 
 ```bash
-$ conda activate dm-cyt-tp
+$ conda activate dm-cyt-tp1
 ```
 
 **Paso 4**: Descomprimir el dataset:
