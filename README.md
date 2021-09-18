@@ -1,4 +1,4 @@
-# UBA - Maestria en Explotación de Datos y Descubrimiento de Conocimiento - Datamining en Ciencia y Teconologia
+# UBA - Maestria en Explotación de Datos y Descubrimiento de Conocimiento - Datamining en Ciencia y Tecnologia
 
 [Wiki](https://github.com/magistery-tps/dm-cyt-tp/wiki)
 
