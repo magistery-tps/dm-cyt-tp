@@ -1,5 +1,7 @@
 # UBA - Maestria en Explotación de Datos y Descubrimiento de Conocimiento - Datamining en Ciencia y Teconologia
 
+[Wiki](https://github.com/magistery-tps/dm-cyt-tp/wiki)
+
 ## Trabajos Prácticos
 
 * TP1: Microestados de EEG
@@ -9,7 +11,6 @@
 
 * [git](https://git-scm.com/downloads)
 * [anaconda](https://www.anaconda.com/products/individual)/[minconda](https://docs.conda.io/en/latest/miniconda.html)
-    * [Instalar Anaconda en Windows](https://github.com/magistery-tps/dm-cyt-tp/wiki/Instalar-Anaconda-en-windows)
 
 ## Comenzando
 
