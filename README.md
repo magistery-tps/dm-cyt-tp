@@ -16,7 +16,7 @@
 
 ### Video
 
-[Paso a Paso](https://www.youtube.com/watch?v=O8YXuHNdIIk)
+[Paso a Paso (Windows)](https://www.youtube.com/watch?v=O8YXuHNdIIk)
 
 ### Pasos
 
