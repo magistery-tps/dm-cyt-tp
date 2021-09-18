@@ -13,6 +13,12 @@
 
 ## Comenzando
 
+### Video
+
+[Video Paso a Paso](https://www.youtube.com/watch?v=O8YXuHNdIIk)
+
+### Pasos
+
 **Paso 1**: Descargar el repositorio.
 
 ```bash
