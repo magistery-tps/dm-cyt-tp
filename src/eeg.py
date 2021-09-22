@@ -10,6 +10,7 @@ def channels():
         'FC5', 'FC6','CP1','CP2','CP5','CP6','AFz','Fpz','POz'
     ]
 
+    
 class EEG:
     def __init__(self, data, nchannels, nsamples, sfrequency, subject, resting_state):
         self.data          = data
