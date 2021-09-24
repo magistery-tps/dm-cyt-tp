@@ -61,3 +61,7 @@ def eegs_total_mean(eegs, inicio = 0, fin= 60):
         promedios_totales = np.concatenate((promedios_totales, promedios.reshape(1,30)), axis=0) 
 
     return promedios_totales
+
+
+def order_asc_by_subject(eggs):
+    return sorted(eegs, key=lambda eeg: (int(eeg.subject),int(eeg.resting_state)))
