@@ -36,7 +36,7 @@ def plot_eeg_topology(data_prom, info_eeg, vminimo, vmaximo, figsize=(8, 4)):
 
 def plot_eeg_topology_on_axis(axis, data_prom, info_eeg, vminimo, vmaximo, title_size=16, title_y=1):
     axis.set_title(
-        'Topogragía Promedio',
+        'Topografía Promedio',
         size=title_size,
         y=title_y
     )
