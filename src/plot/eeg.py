@@ -114,10 +114,10 @@ def plot_eegs_summary(eegs, info_eeg, montage, inicio = 0, fin= 60):
     nchannels             = eegs[0].nchannels
     datos_orig            = np.empty((0, nchannels + 2))  #30 canales + 2 metadata individuo y tipo de reposo
     promedios_totales     = np.empty((0, nchannels))
-    inicio                = 0 #calcula los promedios entre 1 y 4
-    fin                   = 60
+    inicio                = 1 #calcula los promedios entre 1 y 10 para que se vea bien
+    fin                   = 10
 
-    for eeg in sorted(eegs, key=lambda eeg: int(eeg.subject)): #lambda it: it.subject + it.resting_state
+    for eeg in sorted(eegs, key=lambda eeg: int(eeg.subject)): 
         participante = np.repeat(int(eeg.subject), eeg.nsamples).reshape(eeg.nsamples, 1)
         tipo       = np.repeat(int(eeg.resting_state), eeg.nsamples).reshape(eeg.nsamples, 1)    
 
