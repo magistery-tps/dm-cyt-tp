@@ -9,7 +9,7 @@ def load_eeg_dataset(path, srate = 128, verbose=False):
     return [load_eeg(file_path, srate, verbose) for file_path in glob.glob(path)]
 
 def order_asc_by_subject(eggs):
-    return [sorted(eegs, key=lambda eeg: (int(eeg.subject),int(eeg.resting_state)))]
+    return sorted(eegs, key=lambda eeg: (int(eeg.subject),int(eeg.resting_state)))
 
 def to_data_frame(eegs):
     return pd.DataFrame([eeg.to_dict() for eeg in eegs], columns = eegs[0].to_dict().keys())
