@@ -63,5 +63,8 @@ def eegs_total_mean(eegs, inicio = 0, fin= 60):
     return promedios_totales
 
 
-def order_asc_by_subject(eggs):
+def order_asc_by_subject(eegs):
     return sorted(eegs, key=lambda eeg: (int(eeg.subject),int(eeg.resting_state)))
+
+def order_asc_by_resting_state(eegs):
+    return sorted(eegs, key=lambda eeg: (int(eeg.resting_state),int(eeg.subject)))
