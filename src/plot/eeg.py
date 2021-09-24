@@ -62,7 +62,7 @@ def plot_egg_on_axis(
     eeg,
     montage,
     inicio = 1,
-    fin    = 10,
+    fin    = 60,
     title_size=16, 
     title_y=1
 ):
