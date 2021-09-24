@@ -4,8 +4,9 @@
 
 ## Trabajos Prácticos
 
-* TP1: Microestados de EEG
-* TP2: Pte.
+* **TP1**: Microestados de EEG.
+    * [Consigna](https://github.com/magistery-tps/dm-cyt-tp/blob/main/docs/DMCT_preTP1_2021.pdf)
+    * [Informe]() 
 
 ## Pre-Requisitos
 
