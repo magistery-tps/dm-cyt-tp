@@ -29,17 +29,17 @@ def show_gfp_peaks_summary(gfp, peaks, sfrequency):
     print("- Cantidad de picos de GFP:", len(peaks))
     print(
         "- El intervalo temporal entre máximos de GFP promedio es:",
-        np.mean(np.diff(peaks))/sfrequency,
+        np.mean(np.diff(peaks))/sfrequency*1000,
         'ms'
     )
     print(
         "- El intervalo temporal entre máximos de GFP más chico es:", 
-        min(np.diff(peaks)) / sfrequency,
-        'ms'
+        min(np.diff(peaks)) / sfrequency*1000,
+        's'
     )
     print(
         "- El intervalo temporal entre máximos de GFP más grande es:",
-        max(np.diff(peaks)) / sfrequency,
+        max(np.diff(peaks)) / sfrequency*1000,
         'ms'
     )
 
