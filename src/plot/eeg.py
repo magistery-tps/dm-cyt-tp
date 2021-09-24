@@ -62,7 +62,7 @@ def plot_egg_on_axis(
     eeg,
     montage,
     inicio = 1,
-    fin    = 60,
+    fin    = 10,
     title_size=16, 
     title_y=1
 ):
@@ -114,8 +114,8 @@ def plot_eegs_summary(eegs, info_eeg, montage, inicio = 0, fin= 60):
     nchannels             = eegs[0].nchannels
     datos_orig            = np.empty((0, nchannels + 2))  #30 canales + 2 metadata individuo y tipo de reposo
     promedios_totales     = np.empty((0, nchannels))
-    inicio                = 1 #calcula los promedios entre 1 y 10 para que se vea bien
-    fin                   = 10
+    inicio                = 0 
+    fin                   = 60
 
     for eeg in sorted(eegs, key=lambda eeg: int(eeg.subject)): 
         participante = np.repeat(int(eeg.subject), eeg.nsamples).reshape(eeg.nsamples, 1)
