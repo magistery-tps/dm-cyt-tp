@@ -108,7 +108,7 @@ def plot_egg_on_axis(
     axis.set_xlabel('Tiempo (Seg.)')
 
 
-def plot_eegs_summary(eegs, info_eeg, montage, inicio = 1, fin= 4):
+def plot_eegs_summary(eegs, info_eeg, montage, inicio = 0, fin= 60):
     if len(eegs) == 0: return 
 
     nchannels             = eegs[0].nchannels
@@ -135,7 +135,7 @@ def plot_eegs_summary(eegs, info_eeg, montage, inicio = 1, fin= 4):
             axes[1],
             promedios,
             info_eeg,
-            -0.54932109,  # Estos son los valores máximo y minimo de todos los promedios.
-            0.34050091
+            -0.03,  # Estos son los valores máximo y minimo de todos los promedios.
+            0.02 
         )
         plot_eeg_pca(info_eeg, eeg.dataT())
