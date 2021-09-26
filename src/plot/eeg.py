@@ -23,7 +23,7 @@ def plot_eeg_pca(info_eeg, eeg_data, n_components=3, figsize=(10, 3),title_size=
             show     = False
         )
     fig.suptitle(
-        f'{round(var[p]*100, 2)}% de varianza explicada por las primeras {n_components} componentes.',
+        f'{round((np.cumsum(var)[2])*100, 2)}% de varianza explicada por las primeras {n_components} componentes.',
         size=title_size,
         y=title_y
     )
