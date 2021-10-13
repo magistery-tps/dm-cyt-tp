@@ -22,7 +22,7 @@ def find_gfp_peaks(eeg_data, prominence, distance, height):
     
     v_i = vi(eeg_data)
     v_i_peaks = v_i[:, peaks]
-    gfp_values = gfp[peaks]
+    gfp_values = total_gfp[peaks]
     gfp2 = np.sum(gfp_values**2) # normalizing constant in GEV
     n_gfp = peaks.shape[0]
     return total_gfp, peaks, v_i_peaks, gfp_values, gfp2, n_gfp 
