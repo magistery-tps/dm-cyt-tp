@@ -51,9 +51,9 @@ def show_complete_gfp_peaks_summary(gfp, peaks, sfrequency):
     plot_gfp(gfp, peaks, sfrequency)
     
     
-
+    
     # k means modificado 
-def kmeans2(gfp_maps, n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
+def kmeans2(gfp_maps,gfp,gfp_peaks, n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
  
   V = gfp_maps.T
   n_gfp = V.shape[0]
