@@ -57,7 +57,8 @@ def reduce_noise_pca(X,n_comp_pples):
     pca.fit(X)
     X_pca = pca.transform(X)
     X_new = pca.inverse_transform(X_pca)
-    return X_new
+    exp_var_cumul = np.cumsum(pca.fit(X).explained_variance_ratio_)
+    return X_new, exp_var_cumul
     
     # k means modificado 
 def kmeans2(gfp_maps,gfp,gfp_peaks, n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
