@@ -5,8 +5,8 @@ import matplotlib.gridspec as gridspec
 import mne
 from sklearn import decomposition
 
-def plot_eeg_pca(info_eeg, eeg_data, n_components, figsize=(10, 3),title_size=15, title_y=1.05):
-    pca = decomposition.PCA(n_components=n_components)
+def plot_eeg_pca(info_eeg, eeg_data, figsize=(10, 3),title_size=15, title_y=1.05):
+    pca = decomposition.PCA(n_components=3)
     pca.fit(eeg_data)
     pcs = pca.transform(eeg_data)
 
@@ -138,4 +138,4 @@ def plot_eegs_summary(eegs, info_eeg, montage, inicio = 0, fin= 60):
             -0.03,  # Estos son los valores máximo y minimo de todos los promedios.
             0.02 
         )
-        plot_eeg_pca(info_eeg, eeg.dataT(),3)
+        plot_eeg_pca(info_eeg, eeg.dataT())
