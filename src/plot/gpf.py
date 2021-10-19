@@ -99,6 +99,7 @@ def plot_vectores_kmeans(X, labels_gfp, n_clusters):
 #%% dibuja mapa pca de los clusters
 def plot_maps_pca(maps_kmeans,n_clusters,info_eeg):
     import matplotlib.pylab as plt 
+    import mne
     fig3, ax = plt.subplots(ncols=n_clusters, figsize=(10, 4), gridspec_kw=dict(top=0.9),sharex=True, sharey=True)
     for n in range(n_clusters):
         mne.viz.plot_topomap(maps_kmeans[n,:].T,info_eeg, vmin=-0.3,vmax=0.3, cmap='coolwarm', contours=0, axes=ax[n],show=False)
