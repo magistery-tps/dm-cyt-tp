@@ -138,4 +138,4 @@ def plot_eegs_summary(eegs, info_eeg, montage, inicio = 0, fin= 60):
             -0.03,  # Estos son los valores máximo y minimo de todos los promedios.
             0.02 
         )
-        plot_eeg_pca(info_eeg, eeg.dataT())
+        plot_eeg_pca(info_eeg, eeg.dataT(),3)
