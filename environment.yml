@@ -9,6 +9,7 @@ dependencies:
   - scikit-learn
   - scipy
   - jupyterlab
+  - seaborn
   - pip
   - pip:
     - mne
