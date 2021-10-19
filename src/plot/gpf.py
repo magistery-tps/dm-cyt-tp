@@ -80,3 +80,35 @@ def grafica_sil(n_clusters,sil,labels):
    # ax1.set_xticks([-1,-0.5,-0.2,0, 0.2, 0.4, 0.6, 0.8, 1])
 
     plt.show()
+    
+
+#%% Grafico vectores_kmeans_heatmap
+def plot_vectores_kmeans(X, labels_gfp, n_clusters):
+    import seaborn as sns
+    import numpy as np
+    import matplotlib.pylab as plt 
+    marcasx=np.array(np.where(np.diff(np.sort(labels_gfp))==1))
+    plt.figure()
+    plt.axes([0, 0, 1, 1])
+    sns.heatmap(X[:,np.argsort(labels_gfp)],vmin=-10,vmax=10, cmap='coolwarm')
+    plt.title('Vectores ordenados por cluster kmeans mod n=' + str(n_clusters))
+    plt.xticks(marcasx[0,:],labels=list(map(str, np.arange(2,n_clusters+1))))
+    plt.show()
+    
+
+#%% dibuja mapa pca de los clusters
+def plot_maps_pca(maps_kmeans,n_clusters,info_eeg):
+    import matplotlib.pylab as plt 
+    fig3, ax = plt.subplots(ncols=n_clusters, figsize=(10, 4), gridspec_kw=dict(top=0.9),sharex=True, sharey=True)
+    for n in range(n_clusters):
+        mne.viz.plot_topomap(maps_kmeans[n,:].T,info_eeg, vmin=-0.3,vmax=0.3, cmap='coolwarm', contours=0, axes=ax[n],show=False)
+    plt.show()
+    
+    
+def plot_sx_reduce_noise(X,X_new, nro_canal):
+    import matplotlib.pylab as plt 
+    plt.scatter(np.arange(0,len(X[nro_canal,:])),X[nro_canal,:],alpha=0.8,marker="+")
+    plt.scatter(np.arange(0,len(X[nro_canal,:])),X_new[nro_canal, :], alpha=0.2,marker="x")
+    plt.ylabel("amplitud")
+    plt.xlabel("muestras")
+    plt.title("Canal:"+str(nro_canal))
