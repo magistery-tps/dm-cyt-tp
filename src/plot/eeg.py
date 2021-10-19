@@ -5,8 +5,8 @@ import matplotlib.gridspec as gridspec
 import mne
 from sklearn import decomposition
 
-def plot_eeg_pca(info_eeg, eeg_data, figsize=(10, 3),title_size=15, title_y=1.05):
-    pca = decomposition.PCA(n_components=3)
+def plot_eeg_pca(info_eeg, eeg_data, n_components=3, figsize=(10, 3),title_size=15, title_y=1.05):
+    pca = decomposition.PCA(n_components)
     pca.fit(eeg_data)
     pcs = pca.transform(eeg_data)
 
