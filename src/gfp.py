@@ -10,7 +10,7 @@ def vi(eeg_data):
 def gfp(eeg_data):
     return np.sqrt(1/30 * np.sum(vi(eeg_data) ** 2 , axis=0))
 
-def find_gfp_peaks(eeg_data, prominence, distance, height):
+def find_gfp_peaks(eeg_data, prominence, distance, height, outliers, n_components):
     total_gfp = gfp(eeg_data)
 
     peaks, _ = find_peaks(
@@ -38,7 +38,7 @@ def show_gfp_peaks_summary(gfp, peaks, sfrequency):
     print(
         "- El intervalo temporal entre máximos de GFP más chico es:", 
         min(np.diff(peaks)) / sfrequency*1000,
-        's'
+        'ms'
     )
     print(
         "- El intervalo temporal entre máximos de GFP más grande es:",
