@@ -5,7 +5,8 @@
 ## Trabajos Prácticos
 
 * **TP1**: Microestados de EEG.
-    * [Consigna](https://github.com/magistery-tps/dm-cyt-tp/blob/main/docs/DMCT_preTP1_2021.pdf)
+    * [Consigna (Pre TP)](https://github.com/magistery-tps/dm-cyt-tp/blob/main/docs/DMCT_preTP1_2021.pdf)
+    * [Consigna](https://github.com/magistery-tps/dm-cyt-tp/blob/main/docs/TP1_clustering.pdf)
     * [Informe (Edicion)](https://www.overleaf.com/5477697981qwmyyhjgmcjg) 
 
 ## Help
