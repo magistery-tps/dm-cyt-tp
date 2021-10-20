@@ -57,17 +57,16 @@ def kmeans2(gfp_maps,gfp,gfp_peaks,n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
                    f"after {maxiter:d} iterations."))
       # CROSS-VALIDATION criterion for this run (step 8)
         cv = var0 * (n_ch-1)**2/(n_ch-n_maps-1.)**2
+        cv_list = np.append(cv_list,cv)
+        maps_list.append(maps)
+        L_list.append(L)
         # --- GEV_k & GEV ---
         gev = np.zeros(n_maps)
         for k in range(n_maps):
             r = L==k
             gev[k] = np.sum(gfp_values[r]**2 * C[r,k]**2)/gfp2
         
-        gev_sum=np.sum(gev)
-        
-        cv_list = np.append(cv_list,cv)
-        maps_list.append(maps)
-        L_list.append(L)
+        gev_sum=np.sum(gev)     
         gev_list.append(gev)
         gev_sum_list.append(gev_sum)
     # select best run. Lo elige en función del validación cruzada
