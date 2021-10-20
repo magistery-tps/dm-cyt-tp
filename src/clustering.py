@@ -2,7 +2,7 @@ import numpy as np
 
     
 # k means modificado 
-def kmeans2(gfp_maps,gfp_eval,gfp2, n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
+def kmeans2(gfp_maps,gfp,gfp_peaks,n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
      # los inputs son los mapas, el valor del gfp en los picos,
       # la cantidad de clusters, la cantidad de corridas,
       # error máximo, número máximo de iteraciones
@@ -18,6 +18,9 @@ def kmeans2(gfp_maps,gfp_eval,gfp2, n_maps, n_runs=10, maxerr=1e-6, maxiter=500)
     gev_list =  []  #gev respecto de cada label
     gev_sum_list = []  #gev total 
   
+    gfp2 = np.sum(gfp**2) # normalizing constant
+    gfp_values=gfp[gfp_peaks]
+        
     for run in range(n_runs):
       # initialize random cluster centroids 
         rndi = np.random.permutation(n_gfp)[:n_maps]
@@ -32,7 +35,7 @@ def kmeans2(gfp_maps,gfp_eval,gfp2, n_maps, n_runs=10, maxerr=1e-6, maxiter=500)
         while ( (np.abs((var0-var1)/var0) > maxerr) & (n_iter < maxiter) ):
           # (step 3) microstate sequence (= current cluster assignment)
             C = np.dot(V, maps.T)
-            C /= (n_ch*np.outer(gfp_eval, np.std(maps, axis=1)))
+            C /= (n_ch*np.outer(gfp_values, np.std(maps, axis=1)))
             L = np.argmax(C**2, axis=1)
             # (step 4)
             for k in range(n_maps):
@@ -54,19 +57,17 @@ def kmeans2(gfp_maps,gfp_eval,gfp2, n_maps, n_runs=10, maxerr=1e-6, maxiter=500)
                    f"after {maxiter:d} iterations."))
       # CROSS-VALIDATION criterion for this run (step 8)
         cv = var0 * (n_ch-1)**2/(n_ch-n_maps-1.)**2
-        cv_list = np.append(cv_list,cv)
-        maps_list.append(maps)
-        L_list.append(L)
         # --- GEV_k & GEV ---
         gev = np.zeros(n_maps)
         for k in range(n_maps):
             r = L==k
-            gev[k] = np.sum(gfp_eval[r]**2 * C[r,k]**2)/gfp2
+            gev[k] = np.sum(gfp_values[r]**2 * C[r,k]**2)/gfp2
         
         gev_sum=np.sum(gev)
-        #print(f"\n[+] Global explained variance GEV = {gev_total:.3f}")
-        #for k in range(n_maps):
-        #    print(f"GEV_{k:d}: {gev[k]:.3f}")
+        
+        cv_list = np.append(cv_list,cv)
+        maps_list.append(maps)
+        L_list.append(L)
         gev_list.append(gev)
         gev_sum_list.append(gev_sum)
     # select best run. Lo elige en función del validación cruzada
