@@ -10,7 +10,7 @@ def vi(eeg_data):
 def gfp(eeg_data):
     return np.sqrt(1/30 * np.sum(vi(eeg_data) ** 2 , axis=0))
 
-def find_gfp_peaks(eeg_data, prominence, distance, height, outliers, n_components):
+def find_gfp_peaks(eeg_data, prominence, distance, height):
     total_gfp = gfp(eeg_data)
 
     peaks, _ = find_peaks(
