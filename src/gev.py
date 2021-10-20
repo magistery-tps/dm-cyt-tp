@@ -7,9 +7,10 @@ def calculo_gev(X, maps, n_ch, n_clusters, gfp, gfp2, L):
     #data_norm /= data_norm.std(axis=1, keepdims=True)
     n_t = data_norm.shape[0]
     # --- GEV ---
-    maps_norm = maps - maps.mean(axis=1, keepdims=True)
+    #maps_norm = maps - maps.mean(axis=1, keepdims=True)
+    maps_norm=maps
     #maps_norm /= maps_norm.std(axis=1, keepdims=True)
-    maps_norm /= np.sqrt(np.sum(maps**2, axis=1, keepdims=True))
+    #maps_norm /= np.sqrt(np.sum(maps**2, axis=1, keepdims=True))
     # --- correlation data, maps ---
     C = np.dot(data_norm, maps_norm.T)/n_ch
     print("C.shape: " + str(C.shape[0])+str(C.shape[1]))
