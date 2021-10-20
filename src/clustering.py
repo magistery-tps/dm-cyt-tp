@@ -2,7 +2,7 @@ import numpy as np
 
     
 # k means modificado 
-def kmeans2(gfp_maps,gfp_eval, n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
+def kmeans2(gfp_maps,gfp_eval,gfp2, n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
      # los inputs son los mapas, el valor del gfp en los picos,
       # la cantidad de clusters, la cantidad de corridas,
       # error máximo, número máximo de iteraciones
