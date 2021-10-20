@@ -64,7 +64,7 @@ def kmeans2(gfp_maps,gfp_eval,gfp2, n_maps, n_runs=10, maxerr=1e-6, maxiter=500)
         
         gev_total=np.sum(gev)
         print(f"\n[+] Global explained variance GEV = {gev_total:.3f}")
-        for k in range(n_clusters):
+        for k in range(n_maps):
             print(f"GEV_{k:d}: {gev[k]:.3f}")
         gev_list.append(gev)
      
