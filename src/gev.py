@@ -3,7 +3,7 @@ from gfp import vi
 
 def calculo_gev(X, maps, n_ch, n_clusters, gfp, gfp2, L):
     data_norm = X.T
-    data_norm = data - data.mean(axis=1, keepdims=True)
+    #data_norm = data - data.mean(axis=1, keepdims=True)
     data_norm /= data_norm.std(axis=1, keepdims=True)
     n_t = data_norm.shape[0]
     # --- GEV ---
