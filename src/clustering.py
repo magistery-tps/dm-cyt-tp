@@ -15,7 +15,8 @@ def kmeans2(gfp_maps,gfp_eval,gfp2, n_maps, n_runs=10, maxerr=1e-6, maxiter=500)
     cv_list =   []  # cross-validation criterion for each k-means run
     maps_list = []  # microstate maps for each k-means run
     L_list =    []  # microstate label sequence for each k-means run
-    gev_list =  []
+    gev_list =  []  #gev respecto de cada label
+    gev_sum_list = []  #gev total 
   
     for run in range(n_runs):
       # initialize random cluster centroids 
@@ -62,19 +63,20 @@ def kmeans2(gfp_maps,gfp_eval,gfp2, n_maps, n_runs=10, maxerr=1e-6, maxiter=500)
             r = L==k
             gev[k] = np.sum(gfp_eval[r]**2 * C[r,k]**2)/gfp2
         
-        gev_total=np.sum(gev)
-        print(f"\n[+] Global explained variance GEV = {gev_total:.3f}")
-        for k in range(n_maps):
-            print(f"GEV_{k:d}: {gev[k]:.3f}")
+        gev_sum=np.sum(gev)
+        #print(f"\n[+] Global explained variance GEV = {gev_total:.3f}")
+        #for k in range(n_maps):
+        #    print(f"GEV_{k:d}: {gev[k]:.3f}")
         gev_list.append(gev)
-     
+        gev_sum_list.append(gev_sum)
     # select best run. Lo elige en función del validación cruzada
     k_opt = np.argmin(cv_list)
     maps = maps_list[k_opt]
     L  = L_list[k_opt]
     cv = cv_list[k_opt] 
-    gev=gev_list[k_opt]
-    return maps, L, cv, gev
+    gev = gev_list[k_opt]
+    gev_sum = gev_sum_list[k_opt]
+    return maps, L, cv, gev, gev_sum
 
 
 def silhoutte_modificado2(maps,data,labels,ch,n_clusters):
