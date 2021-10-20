@@ -1,8 +1,8 @@
 import numpy as np
 from gfp import vi
 
-def calculo_gev(eeg_data, maps, n_ch, n_clusters, gfp, gfp2):
-  data_norm = vi(eeg_data).T
+def calculo_gev(X, maps, n_ch, n_clusters, gfp, gfp2):
+  data_norm = X.T
   #data_norm = data - data.mean(axis=1, keepdims=True)
   data_norm /= data_norm.std(axis=1, keepdims=True)
   n_t = data_norm.shape[0]
