@@ -1,3 +1,17 @@
+def locmax(x):
+    import numpy as np
+    """Get local maxima of 1D-array
+    Args:
+        x: numeric sequence
+    Returns:
+        m: list, 1D-indices of local maxima
+    """
+
+    dx = np.diff(x) # discrete 1st derivative
+    zc = np.diff(np.sign(dx)) # zero-crossings of dx
+    m = 1 + np.where(zc == -2)[0] # indices of local max.
+    return m
+
 def kmeans_frederic(data, n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
     """Modified K-means clustering as detailed in:
     [1] Pascual-Marqui et al., IEEE TBME (1995) 42(7):658--665
