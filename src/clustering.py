@@ -10,17 +10,18 @@ def kmeans2(gfp_maps,gfp,gfp_peaks,n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
     n_gfp = V.shape[0]
     n_ch = V.shape[1]
     sumV2 = np.sum(V**2)
-
+    
+    gfp_values=gfp[gfp_peaks]
+    gfp2 = np.sum(gfp_values**2) # normalizing constant in GEV
+    
     # Guarda resultados de cada corrida
     cv_list =   []  # cross-validation criterion for each k-means run
     maps_list = []  # microstate maps for each k-means run
     L_list =    []  # microstate label sequence for each k-means run
     gev_list =  []  #gev respecto de cada label
-    gev_sum_list = []  #gev total 
+    gevT_list = []  #gev total 
   
-    gfp2 = np.sum(gfp**2) # normalizing constant
-    gfp_values=gfp[gfp_peaks]
-        
+            
     for run in range(n_runs):
       # initialize random cluster centroids 
         rndi = np.random.permutation(n_gfp)[:n_maps]
@@ -57,26 +58,27 @@ def kmeans2(gfp_maps,gfp,gfp_peaks,n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
                    f"after {maxiter:d} iterations."))
       # CROSS-VALIDATION criterion for this run (step 8)
         cv = var0 * (n_ch-1)**2/(n_ch-n_maps-1.)**2
-        cv_list = np.append(cv_list,cv)
-        maps_list.append(maps)
-        L_list.append(L)
         # --- GEV_k & GEV ---
         gev = np.zeros(n_maps)
         for k in range(n_maps):
             r = L==k
             gev[k] = np.sum(gfp_values[r]**2 * C[r,k]**2)/gfp2
+        gev_total=np.sum(gev)     
         
-        gev_sum=np.sum(gev)     
+        cv_list.append(cv)
+        maps_list.append(maps)
+        L_list.append(L)
         gev_list.append(gev)
-        gev_sum_list.append(gev_sum)
+        gevT_list.append(gev_total)
+    
     # select best run. Lo elige en función del validación cruzada
     k_opt = np.argmin(cv_list)
     maps = maps_list[k_opt]
     L  = L_list[k_opt]
     cv = cv_list[k_opt] 
     gev = gev_list[k_opt]
-    gev_sum = gev_sum_list[k_opt]
-    return maps, L, cv, gev, gev_sum
+    gev_total = gevT_list[k_opt]
+    return maps, L, cv, gev, gev_total
 
 
 def silhoutte_modificado2(maps,data,labels,ch,n_clusters):
