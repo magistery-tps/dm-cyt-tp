@@ -57,7 +57,9 @@ def kmeans2(gfp_maps,gfp,gfp_peaks,n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
                      print((f"\tK-means run {run+1:d}/{n_runs:d} did NOT converge "
                    f"after {maxiter:d} iterations."))
       # CROSS-VALIDATION criterion for this run (step 8)
-        cv = var0 * (n_ch-1)**2/(n_ch-n_maps-1.)**2
+        var = np.sum(V**2) - np.sum(np.sum(maps[L, :]*V, axis=1)**2) #linea agregada
+        #cv = var0 * (n_ch-1)**2/(n_ch-n_maps-1.)**2
+        cv = var * (n_ch-1)**2/(n_ch-n_maps-1.)**2 
         # --- GEV_k & GEV ---
         gev = np.zeros(n_maps)
         for k in range(n_maps):
