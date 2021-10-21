@@ -3,7 +3,7 @@ import numpy as np
 
 def plot_pca_df(df, title = '', target_column = 'label'):
     targets = np.sort(df.label.unique())
-    fig = plt.figure(figsize = (8,8))
+    fig = plt.figure(figsize = (6,6))
     ax = fig.add_subplot(1,1,1) 
     ax.set_xlabel('pc1', fontsize = 15)
     ax.set_ylabel('pc2', fontsize = 15)
