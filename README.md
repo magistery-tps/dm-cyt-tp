@@ -11,7 +11,7 @@
 
 ## Help
 * [Instalar Anaconda en windows](https://github.com/magistery-tps/dm-cyt-tp/wiki/Instalar-Anaconda-en-windows)
-* [Como mofificar notebook desde colab](https://github.com/magistery-tps/dm-cyt-tp/blob/main/docs/Modificar-Notebook.pdf)
+* [Como modificar una notebook desde colab](https://github.com/magistery-tps/dm-cyt-tp/blob/main/docs/Modificar-Notebook.pdf)
 * [Como gnerar github token](https://github.com/magistery-tps/dm-cyt-tp/blob/main/docs/generar_github_token.pdf)
 
 ## Pre-Requisitos
