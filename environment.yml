@@ -13,3 +13,4 @@ dependencies:
   - pip
   - pip:
     - mne
+    - scikit-learn-extra

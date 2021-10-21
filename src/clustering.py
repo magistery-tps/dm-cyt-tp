@@ -108,3 +108,9 @@ def van_dongen(ct):
     maxsumj = np.max(ct.apply(sum,axis=0))
     vd = (n2 - sumi - sumj)/(n2 - maxsumi - maxsumj)
     return vd
+
+def calcula_sse_kmedoids(KM,d):
+  se = []
+  for i in range(0,KM.n_clusters):
+    se.append(sum(d[KM.medoid_indices_[i],KM.labels_==i]**2))
+  return sum(se)
