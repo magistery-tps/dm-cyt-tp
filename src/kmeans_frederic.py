@@ -84,8 +84,8 @@ def kmeans_frederic(data, n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
             var0 /= (n_gfp*(n_ch-1))
             n_iter += 1
         if (n_iter < maxiter):
-            print((f"\tK-means run {run+1:d}/{n_runs:d} converged after "
-                   f"{n_iter:d} iterations."))
+            #print((f"\tK-means run {run+1:d}/{n_runs:d} converged after "
+            #       f"{n_iter:d} iterations."))
         else:
             print((f"\tK-means run {run+1:d}/{n_runs:d} did NOT converge "
                    f"after {maxiter:d} iterations."))
