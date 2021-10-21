@@ -99,10 +99,11 @@ def kmeans_frederic(data, n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
 
     # select best run
     k_opt = np.argmin(cv_list)
+    cv_opt=cv_list[k_opt]
     #k_opt = np.argmax(gevT_list)
     maps = maps_list[k_opt]
     # ms_gfp = ms_list[k_opt] # microstate sequence at GFP peaks
     gev = gev_list[k_opt]
     L_ = L_list[k_opt]
 
-    return maps
+    return maps, gev, L_, cv, gfp
