@@ -16,6 +16,7 @@ def kmeans_frederic(data, n_maps, n_runs=10, maxerr=1e-6, maxiter=500):
         gev: global explained variance (0..1)
         cv: value of the cross-validation criterion
     """
+    import numpy as np
     n_t = data.shape[0]
     n_ch = data.shape[1]
     data = data - data.mean(axis=1, keepdims=True)
