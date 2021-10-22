@@ -23,7 +23,7 @@ def classify_sequence(maps, eegs_subject, n_media):
         datos=eegs_subject[i].data
         datos_filtrados=np.apply_along_axis(lambda m: np.convolve(m, np.ones(n_media), mode='valid'), axis=0, arr=datos)
         total=datos_filtrados.shape[0]
-        labels_secuencia, values, counts=asign_cluster(datos_filtrados,maps_kmeans,30)
+        labels_secuencia, values, counts=asign_cluster(datos_filtrados,maps,30)
         labels_secuencia_list.append(labels_secuencia)
         datos_filtrados_list.append(datos_filtrados)
         sujetos_estados_list.append(np.array([eegs_subject[i].subject,eegs_subject[i].resting_state]))
